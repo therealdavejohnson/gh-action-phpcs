@@ -10,7 +10,7 @@ LABEL "com.github.actions.description"="This will run phpcs on PRs"
 ### installs all of the system requirements needed to run PHP, nginx, mysql etc on Linux Alpine
 RUN apk upgrade --update && apk add --no-cache \
 	supervisor \
-	bash bash-completion apache2 apache2-ssl php7-apache2 curl ca-certificates openssl openssh git php7 php7-phar php7-json php7-iconv php7-openssl tzdata openntpd nano rsync sshpass
+	bash bash-completion apache2 apache2-ssl php7-apache2 curl ca-certificates openssl openssh git php7 php7-phar php7-json php7-iconv php7-openssl tzdata openntpd nano rsync sshpass jq
 
 RUN apk add --no-cache \
   	php7-ftp \
