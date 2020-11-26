@@ -9,7 +9,7 @@ LABEL "com.github.actions.description"="This will run phpcs on PRs"
 
 ### Install all base dependencies
 RUN apk upgrade --update && apk add --no-cache \
-	bash bash-completion curl ca-certificates openssl openssh git tzdata jq \
+	bash bash-completion curl ca-certificates openssl openssh git tzdata jq php7 \
     && rm -f /var/cache/apk/*
 
 ### Install Composer
