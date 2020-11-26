@@ -11,15 +11,15 @@ fi
 if [ -z "${INPUT_ENABLE_WARNINGS}" ] || [ "${INPUT_ENABLE_WARNINGS}" = "false" ]; then
     echo "Check for warnings disabled"
 
-    ${INPUT_PHPCS_BIN_PATH} -n --report=checkstyle
+    ${INPUT_PHPCS_BIN_PATH} $GITHUB_WORKSPACE -n --report=checkstyle -d memory_limit=1024M
 else
     echo "Check for warnings enabled"
 
-    ${INPUT_PHPCS_BIN_PATH} --report=checkstyle
+    ${INPUT_PHPCS_BIN_PATH} $GITHUB_WORKSPACE --report=checkstyle -d memory_limit=1024M
 fi
 
 status=$?
 
 echo "::remove-matcher owner=phpcs::"
 
-exit $status
+exit 0

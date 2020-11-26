@@ -2,7 +2,6 @@ name: 'PHP_CodeSniffer Check with Annotations'
 description: 'PHPCS checker with auto annotations out of the box'
 author: 'Dave Johnson'
 inputs:
- inputs:
   enable_warnings:
     description: 'Enable checking for warnings (-w)'
     required: false
@@ -10,7 +9,7 @@ inputs:
   phpcs_bin_path:
     description: 'Path to phpcs binary'
     required: false
-    default: 'phpcs'
+    default: '/phpcs'
   installed_paths:
     description: 'Setting the installed standard paths'
     required: false
