@@ -13,7 +13,7 @@ inputs:
   installed_paths:
     description: 'Setting the installed standard paths'
     required: false
-    default: ''
+    default: '/root/.composer/vendor/bin/wpcs'
 runs:
   using: 'docker'
   image: 'Dockerfile'
