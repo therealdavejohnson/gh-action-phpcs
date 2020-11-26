@@ -38,17 +38,13 @@ else
 fi
 
 if [ "${USE_CHANGED_FILES}" = "true" ]; then
-    echo "${CHANGED_FILES}" | xargs -rt ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --reportFile=./report.txt
+    echo "${CHANGED_FILES}" | xargs -rt ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --reportFile=report.txt
 else
-    ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --reportFile=./report.txt
+    ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --reportFile=report.txt
 fi
 
 status=$?
 
-
-
 echo "::remove-matcher owner=phpcs::"
-
-
 
 exit $status
