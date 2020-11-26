@@ -59,8 +59,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 ### Install PHPCS and WPCS globally with composer
 RUN composer global require squizlabs/php_codesniffer wp-coding-standards/wpcs \
-	&& ~/.composer/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/wp-coding-standards/wpcs \
-	&& export PATH="$HOME/.composer/vendor/bin:$PATH"
+	&& ~/.composer/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/wp-coding-standards/wpcs
 
 COPY entrypoint.sh \
      problem-matcher.json \
@@ -68,4 +67,6 @@ COPY entrypoint.sh \
 
 RUN chmod +x /action/entrypoint.sh
 
-ENTRYPOINT ["/action/entrypoint.sh"]
+#ENTRYPOINT ["/action/entrypoint.sh"]
+
+CMD [ "/bin/bash" ]
