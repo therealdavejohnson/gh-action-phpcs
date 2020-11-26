@@ -67,6 +67,6 @@ COPY entrypoint.sh \
 
 RUN chmod +x /action/entrypoint.sh
 
-#ENTRYPOINT ["/action/entrypoint.sh"]
+ENTRYPOINT ["/action/entrypoint.sh"]
 
-CMD [ "/bin/bash" ]
+#CMD [ "/bin/bash" ]
