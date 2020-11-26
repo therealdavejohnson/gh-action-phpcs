@@ -41,6 +41,7 @@ if [ "${USE_CHANGED_FILES}" = "true" ]; then
     echo "${CHANGED_FILES}" | xargs -rt ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --report-file=/github/workflow/report.txt
 else
     ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --report-file=/github/workflow/report.txt
+fi
 
 status=$?
 
