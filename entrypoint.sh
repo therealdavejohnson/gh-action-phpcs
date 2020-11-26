@@ -4,6 +4,12 @@ cp /action/problem-matcher.json /github/workflow/problem-matcher.json
 
 echo "::add-matcher::${RUNNER_TEMP}/_github_workflow/problem-matcher.json"
 
+PR_BODY=$(cat "$GITHUB_EVENT_PATH" | jq -r .pull_request.body)
+if [[ "$PR_BODY" == *"[do-not-scan]"* ]]; then
+  echo "[do-not-scan] found in PR description. Skipping PHPCS scan."
+  exit 0
+fi
+
 if [ -n "${INPUT_ONLY_CHANGED_FILES}" ] && [ "${INPUT_ONLY_CHANGED_FILES}" = "true" ]; then
     echo "Will only check changed files"
     USE_CHANGED_FILES="true"
@@ -32,13 +38,17 @@ else
 fi
 
 if [ "${USE_CHANGED_FILES}" = "true" ]; then
-    echo "${CHANGED_FILES}" | xargs -rt ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=checkstyle
+    echo "${CHANGED_FILES}" | xargs -rt ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --reportFile=./report.txt
 else
-    ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=checkstyle
+    ${INPUT_PHPCS_BIN_PATH} ${ENABLE_WARNINGS_FLAG} --report=full --reportFile=./report.txt
 fi
 
 status=$?
 
+
+
 echo "::remove-matcher owner=phpcs::"
+
+
 
 exit $status
