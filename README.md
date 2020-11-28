@@ -6,3 +6,5 @@ This action will help you to run phpcs (PHP_CodeSniffer) with [GitHub Actions](h
 This was based on the work of:
 
 https://github.com/rtCamp/action-phpcs-code-review
+
+v15 is working.
